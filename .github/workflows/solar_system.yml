@@ -33,9 +33,11 @@ jobs:
           run: npm install
         
         - name: Run tests
+          id: node-js-test
           run: npm test
         
         - name: Upload test result as artifact
+          if: always()
           uses: actions/upload-artifact@v4
           with:
             name: Mocha_test_result_${{matrix.os}}_node_${{matrix.node_version}}
